@@ -22,7 +22,7 @@ apply plugin: 'com.jfrog.bintray'
 
 group = 'com.develhack'
 archivesBaseName = 'develhack-core'
-version = '0.9.0'
+version = '0.9.1'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
@@ -47,10 +47,17 @@ jacocoTestReport {
 javadoc {
 	options {
 		locale = 'en_US'
-		addStringOption 'Xdoclint:none', '-quiet'
 		links 'http://docs.oracle.com/javase/8/docs/api/'
 	}
 	title = "Develhack Core Library API (${version})"
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+	allprojects {
+		tasks.withType(Javadoc) {
+			options.addStringOption('Xdoclint:none', '-quiet')
+		}
+	}
 }
 
 task javadocJar(type: Jar) {
