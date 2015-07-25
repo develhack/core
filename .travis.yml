@@ -1,3 +1,7 @@
+env:
+  global:
+    - secure: "Zl09Ya8o4Y7AL8GaJ97/OM+R1vy8BhDeg8bfnbTYgEEbX5AP5jh5N8hA2CKbmFxuc48cKOIXhST7curR14uybnXSIEm88pq9hRI4+5m2mta45Mnd4SBoFVRUxCATff0f4YPMrBaxoFYWjjdBKvC/q9nEGOiWWgDRzKqRUM9RxFo="
+
 language: java
 
 jdk:
@@ -11,3 +15,13 @@ before_install:
 
 after_success:
   - ./gradlew clean check jacocoTestReport coveralls
+
+addons:
+  coverity_scan:
+    project:
+      name: "develhack/develhack-core"
+      description: "Build submitted via Travis CI"
+    notification_email: developer@develhack.com
+    build_command_prepend: "./gradlew clean"
+    build_command:   "./gradlew compileJava"
+    branch_pattern: master
