@@ -157,16 +157,16 @@ public class ConditionsTest_checkValidNumber {
 		@DataProvider
 		static Object[][] invalidDoubleTypeNumberWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Double.NaN,      "foo must be valid number." },
-					{  null, Double.NaN, "variable must be valid number." },
+					{ "foo", Double.NaN,      "foo must be valid number, but it is NaN." },
+					{  null, Double.NaN, "variable must be valid number, but it is NaN." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] invalidFloatTypeNumberWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Float.NaN,      "foo must be valid number." },
-					{  null, Float.NaN, "variable must be valid number." },
+					{ "foo", Float.NaN,      "foo must be valid number, but it is NaN." },
+					{  null, Float.NaN, "variable must be valid number, but it is NaN." },
 			};
 		}// @formatter:on
 	}

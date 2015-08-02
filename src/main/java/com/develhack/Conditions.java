@@ -290,7 +290,7 @@ public final class Conditions {
 	 */
 	public static <T extends CharSequence> T checkNonempty(@Nullable String name, @Nonempty T value)
 			throws IllegalArgumentException {
-		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -304,7 +304,7 @@ public final class Conditions {
 	 */
 	public static <T extends Collection<?>> T checkNonempty(@Nullable String name, @Nonempty T value)
 			throws IllegalArgumentException {
-		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -318,7 +318,7 @@ public final class Conditions {
 	 */
 	public static <T extends Map<?, ?>> T checkNonempty(@Nullable String name, @Nonempty T value)
 			throws IllegalArgumentException {
-		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -332,7 +332,7 @@ public final class Conditions {
 	 * @see #isEmpty(Object)
 	 */
 	public static <T> T checkNonempty(@Nullable String name, @Nonempty T value) throws IllegalArgumentException {
-		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -346,7 +346,8 @@ public final class Conditions {
 	 */
 	public static <T extends CharSequence> T checkNonemptyIfNonnull(@Nullable String name, @Nullable @Nonempty T value)
 			throws IllegalArgumentException {
-		if (value != null && isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (value == null) return null;
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -360,7 +361,8 @@ public final class Conditions {
 	 */
 	public static <T extends Collection<?>> T checkNonemptyIfNonnull(@Nullable String name, @Nullable @Nonempty T value)
 			throws IllegalArgumentException {
-		if (value != null && isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (value == null) return null;
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -374,7 +376,8 @@ public final class Conditions {
 	 */
 	public static <T extends Map<?, ?>> T checkNonemptyIfNonnull(@Nullable String name, @Nullable @Nonempty T value)
 			throws IllegalArgumentException {
-		if (value != null && isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (value == null) return null;
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -389,7 +392,8 @@ public final class Conditions {
 	 */
 	public static <T> T checkNonemptyIfNonnull(@Nullable String name, @Nullable @Nonempty T value)
 			throws IllegalArgumentException {
-		if (value != null && isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name));
+		if (value == null) return null;
+		if (isEmpty(value)) throw new IllegalArgumentException(mustBeNonempty(name, value));
 		return value;
 	}
 
@@ -402,7 +406,7 @@ public final class Conditions {
 	 * @throws IllegalArgumentException if the {@code value} is {@link Double#NaN NaN}.
 	 */
 	public static double checkValidNumber(@Nullable String name, @ValidNumber double value) throws IllegalArgumentException {
-		if (Double.isNaN(value)) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (Double.isNaN(value)) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -415,7 +419,7 @@ public final class Conditions {
 	 * @throws IllegalArgumentException if the {@code value} is {@link Float#NaN NaN}.
 	 */
 	public static float checkValidNumber(@Nullable String name, @ValidNumber float value) throws IllegalArgumentException {
-		if (Float.isNaN(value)) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (Double.isNaN(value)) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -428,8 +432,7 @@ public final class Conditions {
 	 * @throws IllegalArgumentException if the {@code value} is {@literal null} or {@link Double#NaN NaN}.
 	 */
 	public static Double checkValidNumber(@Nullable String name, @ValidNumber Double value) throws IllegalArgumentException {
-		checkNonnull(name, value);
-		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (value == null || value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -442,8 +445,7 @@ public final class Conditions {
 	 * @throws IllegalArgumentException if the {@code value} is {@literal null} or {@link Float#NaN NaN}.
 	 */
 	public static Float checkValidNumber(@Nullable String name, @ValidNumber Float value) throws IllegalArgumentException {
-		checkNonnull(name, value);
-		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (value == null || value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -458,7 +460,7 @@ public final class Conditions {
 	public static Double checkValidNumberIfNonnull(@Nullable String name, @Nullable @ValidNumber Double value)
 			throws IllegalArgumentException {
 		if (value == null) return null;
-		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -473,7 +475,7 @@ public final class Conditions {
 	public static Float checkValidNumberIfNonnull(@Nullable String name, @Nullable @ValidNumber Float value)
 			throws IllegalArgumentException {
 		if (value == null) return null;
-		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name));
+		if (value.isNaN()) throw new IllegalArgumentException(mustBeValidNumber(name, value));
 		return value;
 	}
 
@@ -487,8 +489,7 @@ public final class Conditions {
 	 *             positive infinity} or {@link Double#NEGATIVE_INFINITY negative infinity}.
 	 */
 	public static double checkFiniteNumber(@Nullable String name, @FiniteNumber double value) throws IllegalArgumentException {
-		checkValidNumber(name, value);
-		if (Double.isInfinite(value)) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (Double.isNaN(value) || Double.isInfinite(value)) throw new IllegalArgumentException(mustBeFiniteNumber(name, value));
 		return value;
 	}
 
@@ -502,8 +503,7 @@ public final class Conditions {
 	 *             {@link Float#POSITIVE_INFINITY positive infinity} or {@link Float#NEGATIVE_INFINITY negative infinity}.
 	 */
 	public static float checkFiniteNumber(@Nullable String name, @FiniteNumber float value) throws IllegalArgumentException {
-		checkValidNumber(name, value);
-		if (Float.isInfinite(value)) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (Float.isNaN(value) || Float.isInfinite(value)) throw new IllegalArgumentException(mustBeFiniteNumber(name, value));
 		return value;
 	}
 
@@ -517,8 +517,8 @@ public final class Conditions {
 	 *             {@link Double#POSITIVE_INFINITY positive infinity} or {@link Double#NEGATIVE_INFINITY negative infinity}.
 	 */
 	public static Double checkFiniteNumber(@Nullable String name, @FiniteNumber Double value) throws IllegalArgumentException {
-		checkValidNumber(name, value);
-		if (value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (value == null || value.isNaN() || value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name,
+				value));
 		return value;
 	}
 
@@ -532,8 +532,8 @@ public final class Conditions {
 	 *             {@link Float#POSITIVE_INFINITY positive infinity} or {@link Float#NEGATIVE_INFINITY negative infinity}.
 	 */
 	public static Float checkFiniteNumber(@Nullable String name, @FiniteNumber Float value) throws IllegalArgumentException {
-		checkValidNumber(name, value);
-		if (value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (value == null || value.isNaN() || value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name,
+				value));
 		return value;
 	}
 
@@ -549,8 +549,7 @@ public final class Conditions {
 	public static Double checkFiniteNumberIfNonnull(@Nullable String name, @Nullable @FiniteNumber Double value)
 			throws IllegalArgumentException {
 		if (value == null) return null;
-		checkValidNumber(name, value);
-		if (value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (value.isNaN() || value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name, value));
 		return value;
 	}
 
@@ -566,8 +565,7 @@ public final class Conditions {
 	public static Float checkFiniteNumberIfNonnull(@Nullable String name, @Nullable @FiniteNumber Float value)
 			throws IllegalArgumentException {
 		if (value == null) return null;
-		checkValidNumber(name, value);
-		if (value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name));
+		if (value.isNaN() || value.isInfinite()) throw new IllegalArgumentException(mustBeFiniteNumber(name, value));
 		return value;
 	}
 
@@ -2362,16 +2360,16 @@ public final class Conditions {
 		return format("%1$s must be non-null.", name);
 	}
 
-	private static String mustBeNonempty(String name) {
-		return format("%1$s must be non-empty.", name);
+	private static String mustBeNonempty(String name, Object value) {
+		return format("%1$s must be non-empty, but it is %2$s.", name, value == null ? "null" : "empty");
 	}
 
-	private static String mustBeValidNumber(String name) {
-		return format("%1$s must be valid number.", name);
+	private static String mustBeValidNumber(String name, Object value) {
+		return format("%1$s must be valid number, but it is %2$s.", name, value);
 	}
 
-	private static String mustBeFiniteNumber(String name) {
-		return format("%1$s must be finite number.", name);
+	private static String mustBeFiniteNumber(String name, Object value) {
+		return format("%1$s must be finite number, but it is %2$s.", name, value);
 	}
 
 	private static String mustBeGreaterThan(String name, Object value, Object threshold) {

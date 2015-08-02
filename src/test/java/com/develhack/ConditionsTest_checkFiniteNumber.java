@@ -153,24 +153,24 @@ public class ConditionsTest_checkFiniteNumber {
 		@DataProvider
 		static Object[][] infiniteDoubleTypeNumberWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Double.NEGATIVE_INFINITY,      "foo must be finite number." },
-					{  null, Double.NEGATIVE_INFINITY, "variable must be finite number." },
-					{ "foo", Double.POSITIVE_INFINITY,      "foo must be finite number." },
-					{  null, Double.POSITIVE_INFINITY, "variable must be finite number." },
-					{ "foo", Double.NaN,                     "foo must be valid number." },
-					{  null, Double.NaN,                "variable must be valid number." },
+					{ "foo", Double.NEGATIVE_INFINITY,      "foo must be finite number, but it is -Infinity." },
+					{  null, Double.NEGATIVE_INFINITY, "variable must be finite number, but it is -Infinity." },
+					{ "foo", Double.POSITIVE_INFINITY,       "foo must be finite number, but it is Infinity." },
+					{  null, Double.POSITIVE_INFINITY,  "variable must be finite number, but it is Infinity." },
+					{ "foo", Double.NaN,                          "foo must be finite number, but it is NaN." },
+					{  null, Double.NaN,                     "variable must be finite number, but it is NaN." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] infiniteFloatTypeNumberWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Float.NEGATIVE_INFINITY,      "foo must be finite number." },
-					{  null, Float.NEGATIVE_INFINITY, "variable must be finite number." },
-					{ "foo", Float.POSITIVE_INFINITY,      "foo must be finite number." },
-					{  null, Float.POSITIVE_INFINITY, "variable must be finite number." },
-					{ "foo", Float.NaN,                     "foo must be valid number." },
-					{  null, Float.NaN,                "variable must be valid number." },
+					{ "foo", Float.NEGATIVE_INFINITY,      "foo must be finite number, but it is -Infinity." },
+					{  null, Float.NEGATIVE_INFINITY, "variable must be finite number, but it is -Infinity." },
+					{ "foo", Float.POSITIVE_INFINITY,       "foo must be finite number, but it is Infinity." },
+					{  null, Float.POSITIVE_INFINITY,  "variable must be finite number, but it is Infinity." },
+					{ "foo", Float.NaN,                          "foo must be finite number, but it is NaN." },
+					{  null, Float.NaN,                     "variable must be finite number, but it is NaN." },
 			};
 		}// @formatter:on
 	}
