@@ -29,7 +29,7 @@ public class ConditionsTest_checkGreaterThan {
 		}
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "threshold must be valid number\\.")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "threshold must be valid number, but it is NaN\\.")
 	public void checkGreaterThan_DoubleTypeThresholdIsNaN_ThrowsException() throws Exception {
 		Conditions.checkGreaterThan(null, 0D, Double.NaN);
 	}
@@ -53,7 +53,7 @@ public class ConditionsTest_checkGreaterThan {
 		}
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "threshold must be valid number\\.")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "threshold must be valid number, but it is NaN\\.")
 	public void checkGreaterThan_FloatTypeThresholdIsNaN_ThrowsException() throws Exception {
 		Conditions.checkGreaterThan(null, 0D, Float.NaN);
 	}

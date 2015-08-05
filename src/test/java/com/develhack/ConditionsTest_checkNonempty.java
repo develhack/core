@@ -245,40 +245,40 @@ public class ConditionsTest_checkNonempty {
 		@DataProvider
 		static Object[][] nullWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", null,      "foo must be non-empty." },
-					{  null, null, "variable must be non-empty." },
+					{ "foo", null,      "foo must be non-empty, but it is null." },
+					{  null, null, "variable must be non-empty, but it is null." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] emptyCharSequenceWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo",   "",      "foo must be non-empty." },
-					{  null,   "", "variable must be non-empty." },
+					{ "foo",   "",      "foo must be non-empty, but it is empty." },
+					{  null,   "", "variable must be non-empty, but it is empty." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] emptyCollectionWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Collections.emptyList(),      "foo must be non-empty." },
-					{  null, Collections.emptyList(), "variable must be non-empty." },
+					{ "foo", Collections.emptyList(),      "foo must be non-empty, but it is empty." },
+					{  null, Collections.emptyList(), "variable must be non-empty, but it is empty." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] emptyMapWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", Collections.emptyMap(),      "foo must be non-empty." },
-					{  null, Collections.emptyMap(), "variable must be non-empty." },
+					{ "foo", Collections.emptyMap(),      "foo must be non-empty, but it is empty." },
+					{  null, Collections.emptyMap(), "variable must be non-empty, but it is empty." },
 			};
 		}// @formatter:on
 
 		@DataProvider
 		static Object[][] emptyObjectWithExpectedExceptionMessage() {// @formatter:off
 			return new Object[][] {
-					{ "foo", new Object[0],      "foo must be non-empty." },
-					{  null, new Object[0], "variable must be non-empty." },
+					{ "foo", new Object[0],      "foo must be non-empty, but it is empty." },
+					{  null, new Object[0], "variable must be non-empty, but it is empty." },
 			};
 		}// @formatter:on
 	}
