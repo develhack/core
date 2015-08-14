@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExcludedFrom {
 
-	/** features that exclude this field */
+	/** Features that exclude this field */
 	Class<? extends Annotation>[] value();
 }

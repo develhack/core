@@ -14,9 +14,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface InitializeFieldsByConstructor {
 
-	/** access level of constructor that initialize only final fields */
+	/** Access level of the constructor that initialize only final fields */
 	Access finalFieldsInitializer() default Access.PUBLIC;
 
-	/** access level of constructor that initialize all fields */
+	/** Access level of the constructor that initialize all fields */
 	Access allFieldsInitializer() default Access.NONE;
 }

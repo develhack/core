@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Stringable {
 
-	/** evaluate the superclass. */
+	/** Whether to evaluate the superclass. */
 	boolean evaluateSuperclass() default false;
 }

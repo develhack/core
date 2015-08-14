@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Equatable {
 
-	/** evaluate the superclass. */
+	/** Whether to evaluate the superclass. */
 	boolean evaluateSuperclass() default false;
 }

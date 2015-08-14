@@ -4,14 +4,14 @@ package com.develhack.annotation.feature;
  * Access level.
  */
 public enum Access {
-	/** public scope */
+	/** Public scope */
 	PUBLIC,
-	/** protected scope */
+	/** Protected scope */
 	PROTECTED,
-	/** default (package private) scope */
+	/** Default (package private) scope */
 	DEFAULT,
 	/** private scope */
 	PRIVATE,
-	/** none (not present) */
+	/** None (not present) */
 	NONE
 }
