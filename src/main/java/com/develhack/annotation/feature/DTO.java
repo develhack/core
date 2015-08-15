@@ -14,9 +14,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DTO {
 
-	/** access level of getter */
+	/** Access level of the getters */
 	Access get() default Access.PUBLIC;
 
-	/** access level of setter */
+	/** Access level of the setters */
 	Access set() default Access.PUBLIC;
 }

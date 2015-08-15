@@ -14,9 +14,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Accessible {
 
-	/** access level of getter */
+	/** Access level of the getter */
 	Access get() default Access.PUBLIC;
 
-	/** access level of setter */
+	/** Access level of the setter */
 	Access set() default Access.PUBLIC;
 }
